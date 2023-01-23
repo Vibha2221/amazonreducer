@@ -33,7 +33,7 @@ function Product(props) {
       <div className="productInfo">
         <p>{props.data.title}</p>
         <p className="productPrice">
-          <strong>{`price $: ${props.data.price}`}</strong>
+          <strong>{`price: ${props.data.price}Rs`}</strong>
         </p>
         <div className="productRating">
           {Array(props.data.rating)
