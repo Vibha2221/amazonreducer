@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import image from "./logo.png";
 import "./Header.css";
 import { Link } from "react-router-dom";
@@ -11,14 +11,15 @@ import {
 import { useStateValue } from "../StateProvider/StateProvider";
 
 function Header() {
-  const [{basket}, dispatch] = useStateValue();
+  const [{ basket }, dispatch] = useStateValue();
   console.log(basket);
+  console.log(dispatch);
 
   return (
     <div className="header">
       {/* logo on the left */}
       <Link to="/">
-        <img className="headerLogo" src={image} />
+        <img className="headerLogo" src={image} alt="" />
       </Link>
       {/*Searchbox */}
       <div className="searchBar">
@@ -63,7 +64,9 @@ function Header() {
               className="cartIcon"
             ></FontAwesomeIcon>
             {/*Number of items in the basket */}
-            <span className="headerOption2 headerBasketCount">{basket.length}</span>
+            <span className="headerOption2 headerBasketCount">
+              {basket.length}
+            </span>
           </div>
         </Link>
       </div>

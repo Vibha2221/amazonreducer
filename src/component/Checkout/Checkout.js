@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useStateValue } from "../StateProvider/StateProvider";
 import "./Checkout.css";
 import image from "./checkoutLogo1.jpg";
@@ -7,7 +7,7 @@ import Subtotal from "./Subtotal/Subtotal";
 
 function Checkout() {
   const [{ basket }, dispatch] = useStateValue();
-
+  console.log(dispatch);
   return (
     <div className="checkout">
       <div className="checkoutLeft">

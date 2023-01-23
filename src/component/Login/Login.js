@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import image from "./loginLogo.png";
 import { Link } from "react-router-dom";
@@ -17,7 +17,7 @@ function Login() {
   return (
     <div className="login">
       <Link to="/">
-        <img className="loginLogo" src={image} />
+        <img className="loginLogo" src={image} alt="#" />
       </Link>
 
       <div className="loginContainer">

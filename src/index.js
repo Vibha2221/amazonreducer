@@ -3,10 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import {
-  StateContext,
-  StateProvider,
-} from "./component/StateProvider/StateProvider";
+import { StateProvider } from "./component/StateProvider/StateProvider";
 import reducer, { initialState } from "./Reducer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

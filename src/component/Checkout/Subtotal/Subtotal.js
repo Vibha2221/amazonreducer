@@ -1,5 +1,5 @@
-import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
-import React, { useState } from "react";
+//import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
 import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from "../../../Reducer";
 import { useStateValue } from "../../StateProvider/StateProvider";
@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 function Subtotal() {
   const history = useNavigate();
   const [{ basket }, dispatch] = useStateValue();
-
+  console.log(dispatch);
   return (
     <div className="subtotal">
       <CurrencyFormat

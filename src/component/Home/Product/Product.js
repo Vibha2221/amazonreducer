@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import { useStateValue } from "../../StateProvider/StateProvider";
 import "./Product.css";
 
@@ -14,6 +14,7 @@ import "./Product.css";
 
 function Product(props) {
   const [{ basket }, dispatch] = useStateValue();
+  console.log(basket);
 
   const addToBasket = () => {
     dispatch({
