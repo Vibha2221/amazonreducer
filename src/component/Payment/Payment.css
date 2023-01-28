@@ -42,9 +42,15 @@
   height: 100px;
 }
 .all__radio {
-  display: grid;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  align-items: flex-start;
 }
+
+
 
 .payment__method {
   margin: 10px;
@@ -60,13 +66,13 @@
 }
 .input__radio1 {
   position: relative;
-  right: 15px;
+  /* right: 15px; */
 }
 .input__radio2 {
   position: relative;
-  right: 6px;
+  /* right: 6px; */
 }
 .input__radio3 {
   position: relative;
-  right: 8px;
+  /* right: 8px; */
 }

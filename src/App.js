@@ -6,6 +6,7 @@ import Home from "./component/Home/Home";
 import Login from "./component/Login/Login";
 import Checkout from "./component/Checkout/Checkout";
 import Payment from "./component/Payment/Payment";
+import Footer from "./component/Footer/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/payment" element={<Payment />}></Route>
         </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   );

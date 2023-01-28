@@ -27,6 +27,7 @@ const reducer = (state, action) => {
           basket: allList,
         };
       }
+
       console.log(index + "i");
       console.log(allList);
       allList.splice(index, 1);
@@ -37,6 +38,17 @@ const reducer = (state, action) => {
         ...state,
         basket: allList,
       };
+
+    case "CLEAR_ALL_BASKETS":
+      let newPosts = state.basket.findIndex((basket) => {
+        return action.id !== basket.id;
+      });
+
+      return {
+        ...state,
+        basket: newPosts,
+      };
+
     default:
       return state;
   }
