@@ -1,22 +1,25 @@
 import React from "react";
 import { useStateValue } from "../../StateProvider/StateProvider";
 import "./Product.css";
-
-// const getItems=()=>{
-//   let allList=localStorage.getItem('list');
-//   console.log(allList);
-//   if(allList){
-//     return JSON.parse(localStorage.getItem('list'));
-//     }else{
-//       return[];
-//     }
-// }
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Product(props) {
   const [{ basket }, dispatch] = useStateValue();
   console.log(basket);
 
   const addToBasket = () => {
+    toast("Item added to card", {
+      position: "bottom-center",
+
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
     dispatch({
       type: "ADD_TO_BASKET",
       item: {
@@ -47,6 +50,7 @@ function Product(props) {
 
       <img src={props.data.image} alt="#" />
       <button onClick={addToBasket}>Add to Basket</button>
+      <ToastContainer toastStyle={{ backgroundColor: "approx Cream Can" }} />
     </div>
   );
 }
