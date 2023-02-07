@@ -5,9 +5,15 @@ import Logo from "./logo.png";
 const Footer = () => {
   const year = new Date().getFullYear();
   console.log(year);
-
+  const top = () => {
+    window.scrollTo(0, 0);
+    console.log("clicked");
+  };
   return (
     <footer>
+      <button className="back_button" onClick={top}>
+        Back To Top
+      </button>
       <div className="footer_container">
         <div className="footr_details_one">
           <h3>Get to Know US</h3>

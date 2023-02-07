@@ -100,9 +100,7 @@ function Payment({ id, image, title, price, rating }) {
                 </div>
               </div>
             </div>
-            <div>
-              <p>This simple popup in react</p>
-            </div>
+            <div></div>
           </div>
         ) : (
           ""

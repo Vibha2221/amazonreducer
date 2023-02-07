@@ -1,21 +1,41 @@
 import React from "react";
-import image from "./logo.png";
 import "./Header.css";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import {
-  faCartPlus,
-  faMagnifyingGlass,
-} from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 import { useStateValue } from "../StateProvider/StateProvider";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Header() {
-  const [state, setState] = useState("");
   const [{ basket }, dispatch] = useStateValue("");
-  console.log(basket);
-  console.log(dispatch);
+  const [searchItem, setSearchItem] = useState("");
+  const [mailId, setMailId] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    setMailId(localStorage.getItem("email"));
+    setPassword(localStorage.getItem("password"));
+  }, []);
+
+  const navigate = useNavigate();
+  let username = localStorage.getItem("username");
+
+  useEffect(() => {
+    setMailId(localStorage.removeItem("email"));
+    setPassword(localStorage.removeItem("password"));
+  }, []);
+  let SignIn = localStorage.removeItem("Sign In");
+  // console.log(basket);
+  // console.log(dispatch);
+
+  const handleChange = (basket) => {
+    setSearchItem(basket.target.value);
+    console.log(basket.target.value);
+  };
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   // Perform the search with the searchTerm value
+  // };
 
   return (
     <div>
@@ -39,7 +59,13 @@ function Header() {
             </select>
           </div>
           <div>
-            <input type="text" className="navbar__searchbox" />
+            <input
+              type="text"
+              className="navbar__searchbox"
+              // value={searchTerm}
+              onChange={handleChange}
+              placeholder="Search Amazon.in"
+            />
           </div>
           <div className="navbar__seaarchboxdiv">
             <div className="navbar__searchicon" />
@@ -47,7 +73,9 @@ function Header() {
         </div>
         <Link to="/login">
           <div className="navbar_text navbar__signin">
-            <div style={{ fontSize: "14px" }}>Hello, Sign In</div>
+            <div style={{ fontSize: "14px" }}>
+              Hello, {{ username } ? username : SignIn}
+            </div>
             <div style={{ fontWeight: "bold" }}>Account & List</div>
           </div>
         </Link>
@@ -78,87 +106,6 @@ function Header() {
         <div className="navbar__footer_text">Home & Kitchen</div>
       </div>
     </div>
-    // <div className="header">
-    //   {/* logo on the left */}
-    //   <Link to="/">
-    //     <img className="headerLogo" src={image} alt="" />
-    //   </Link>
-    //   {/*Searchbox */}
-    //   <div className="searchBar">
-    //     <input
-    //       type="text"
-    //       className="searchInput"
-    //       vlaue={state}
-    //       onChange={(event) => {
-    //         setState(event.target.value);
-    //       }}
-    //     />
-
-    //     <FontAwesomeIcon
-    //       icon={faMagnifyingGlass}
-    //       className="searchIcon"
-    //     ></FontAwesomeIcon>
-    //   </div>
-    //   <div className="template_container">
-    //     {basket
-    //       .filter((item) => {
-    //         if (state == "") {
-    //           return item;
-    //         } else if (item.title.toLowerCase().includes(state.toLowerCase())) {
-    //           return item;
-    //         }
-    //         console.log(item);
-    //       })
-    //       .map((item) => {
-    //         return (
-    //           <div className="template" key={item.id}>
-    //             <img src={item.image} alt="#" />
-    //             <h3>{item.title}</h3>
-    //             <p className="price">${item.price}</p>
-    //           </div>
-    //         );
-    //       })}
-    //   </div>
-    //   <div className="headNavBar">
-    //     {/*  1st Link */}
-
-    //     <Link to="/login" className="headerLink">
-    //       <div className="headerOption">
-    //         <span className="headerOption1">Hello, </span>
-    //         <span className="headerOption2">Sign In</span>
-    //       </div>
-    //     </Link>
-    //     {/*  2nd Link */}
-    //     <Link to="/" className="headerLink">
-    //       <div className="headerOption">
-    //         <span className="headerOption1">Returns</span>
-    //         <span className="headerOption2">& Orders</span>
-    //       </div>
-    //     </Link>
-    //     {/* 3rd Link */}
-    //     <Link to="/" className="headerLink">
-    //       <div className="headerOption">
-    //         <span className="headerOption1">Your </span>
-    //         <span className="headerOption2">Prime</span>
-    //       </div>
-    //     </Link>
-    //     {/* 4th Link */}
-    //     <Link to="/checkout" className="headerLink">
-    //       <div className="headerBasket">
-    //         {/* Shopping basket icon */}
-    //         <FontAwesomeIcon
-    //           icon={faCartPlus}
-    //           className="cartIcon"
-    //         ></FontAwesomeIcon>
-    //         {/*Number of items in the basket */}
-    //         <span className="headerOption2 headerBasketCount">
-    //           {basket.length}
-    //         </span>
-    //       </div>
-    //     </Link>
-    //   </div>
-    //   {/*Basket icon with number */}
-    // </div>
   );
 }
 export default Header;
